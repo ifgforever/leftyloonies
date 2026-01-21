@@ -4,27 +4,41 @@
     "title": "Welcome to My Blog",
     "date": "2026-01-21",
     "tags": ["intro"],
-    "excerpt": "What this site is, who it’s for, and how I’ll write.",
-    "content": [
-      "This is where I’ll post my articles.",
-      "I’ll focus on policy, culture, and current events — with a clear point of view and sources when needed.",
-      "If you like it, bookmark the site and subscribe."
+    "excerpt": "What this site is and how I’ll write here.",
+    "blocks": [
+      { "type": "p", "text": "This is where I’ll post articles, video breakdowns, and receipts." },
+      { "type": "callout", "kind": "note", "title": "Posting style", "text": "Hard on ideas. Strong on facts. Links when needed." },
+      { "type": "h2", "text": "Start here" },
+      { "type": "list", "items": ["Bookmark the site", "Share posts you agree with", "Send tips and sources"] }
     ]
   },
   {
-    "slug": "how-i-think",
-    "title": "How I Think About Politics",
+    "slug": "media-spin-breakdown",
+    "title": "Media Spin vs Reality: A Quick Breakdown",
     "date": "2026-01-21",
-    "tags": ["values", "policy"],
-    "excerpt": "A simple framework: incentives, tradeoffs, and the Constitution.",
-    "content": [
-      "I try to evaluate political issues with a few basics:",
-      "## 1) Incentives",
-      "Good intentions don’t guarantee good outcomes.",
-      "## 2) Tradeoffs",
-      "Every policy has a cost — I want honesty about that cost.",
-      "## 3) Limits",
-      "Power should have guardrails, and local control often beats centralized control."
+    "tags": ["media", "commentary"],
+    "excerpt": "A template for calling out narratives with receipts.",
+    "blocks": [
+      { "type": "p", "text": "If you want to persuade people, you need two things: clarity and proof." },
+      { "type": "h2", "text": "Video clip" },
+      {
+        "type": "video",
+        "provider": "youtube",
+        "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "title": "Example clip",
+        "caption": "Embed any YouTube link (or Vimeo)."
+      },
+      { "type": "h2", "text": "The claim" },
+      { "type": "quote", "text": "Put the claim here. Keep it short.", "by": "Headline / Politician / Commentator" },
+      { "type": "h2", "text": "Receipts" },
+      {
+        "type": "sources",
+        "items": [
+          { "label": "Source 1 (official)", "url": "https://example.com" },
+          { "label": "Source 2 (data)", "url": "https://example.com" }
+        ]
+      },
+      { "type": "callout", "kind": "hot", "title": "My take", "text": "Then explain the incentives + outcomes. Attack the logic, not random people." }
     ]
   }
 ]
