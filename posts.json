@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "welcome",
+    "title": "Welcome to My Blog",
+    "date": "2026-01-21",
+    "tags": ["intro"],
+    "excerpt": "What this site is, who it’s for, and how I’ll write.",
+    "content": [
+      "This is where I’ll post my articles.",
+      "I’ll focus on policy, culture, and current events — with a clear point of view and sources when needed.",
+      "If you like it, bookmark the site and subscribe."
+    ]
+  },
+  {
+    "slug": "how-i-think",
+    "title": "How I Think About Politics",
+    "date": "2026-01-21",
+    "tags": ["values", "policy"],
+    "excerpt": "A simple framework: incentives, tradeoffs, and the Constitution.",
+    "content": [
+      "I try to evaluate political issues with a few basics:",
+      "## 1) Incentives",
+      "Good intentions don’t guarantee good outcomes.",
+      "## 2) Tradeoffs",
+      "Every policy has a cost — I want honesty about that cost.",
+      "## 3) Limits",
+      "Power should have guardrails, and local control often beats centralized control."
+    ]
+  }
+]
