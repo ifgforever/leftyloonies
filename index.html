@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Blog</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">My Blog</a>
+      <nav class="nav">
+        <a href="./index.html">Articles</a>
+        <a href="#about">About</a>
+        <a href="#subscribe">Subscribe</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Articles & Commentary</h1>
+      <p class="muted">Clear takes, sources when needed, and consistent updates.</p>
+    </section>
+
+    <section class="controls card">
+      <div class="controls-row">
+        <input id="searchInput" class="input" type="search" placeholder="Search articles…" />
+        <select id="tagSelect" class="select">
+          <option value="">All tags</option>
+        </select>
+        <select id="sortSelect" class="select">
+          <option value="new">Newest</option>
+          <option value="old">Oldest</option>
+        </select>
+      </div>
+      <div id="tagChips" class="chips"></div>
+    </section>
+
+    <section id="posts" class="posts"></section>
+
+    <section id="about" class="card">
+      <h2>About</h2>
+      <p>
+        Write a short “why this blog exists” paragraph here. Keep it simple and honest.
+      </p>
+    </section>
+
+    <section id="subscribe" class="card">
+      <h2>Subscribe</h2>
+      <p class="muted">Add your email platform link here (Substack, Beehiiv, Mailchimp, etc.).</p>
+      <a class="button" href="#" target="_blank" rel="noopener">Subscribe</a>
+    </section>
+
+    <footer class="site-footer">
+      <p class="muted">© <span id="year"></span> My Blog • Built as a fast static site</p>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
