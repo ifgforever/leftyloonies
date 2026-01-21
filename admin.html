@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin • My Blog</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .admin-grid{ display:grid; grid-template-columns: 320px 1fr; gap:16px; }
+    @media (max-width: 980px){ .admin-grid{ grid-template-columns:1fr; } }
+    .admin-list{ display:flex; flex-direction:column; gap:10px; }
+    .admin-item{ cursor:pointer; }
+    .admin-item.active{ border-color: rgba(74,163,255,.9); box-shadow: 0 0 0 3px rgba(74,163,255,.12); }
+    .row{ display:flex; gap:10px; flex-wrap:wrap; }
+    .row > *{ flex:1 1 220px; }
+    .toolbar{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .toolbar .button{ white-space:nowrap; }
+    .danger{ border-color: rgba(255,120,120,.6)!important; }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .help{ color: var(--muted); font-size:.95rem; }
+    .split{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+    @media (max-width: 980px){ .split{ grid-template-columns:1fr; } }
+    .block{ border:1px solid rgba(34,49,73,.9); border-radius:14px; padding:12px; background: rgba(9,12,18,.35); margin:10px 0; }
+    .block-head{ display:flex; justify-content:space-between; gap:10px; align-items:center; flex-wrap:wrap; }
+    .block-type{ font-weight:800; }
+    .mini{ padding:8px 10px; border-radius:12px; }
+    .preview{ border:1px solid rgba(34,49,73,.9); border-radius:16px; padding:16px; background: rgba(9,12,18,.25); }
+    .preview h1{ margin: 6px 0 8px; }
+    .preview .muted{ margin-top:0; }
+    .file-input{ display:inline-flex; align-items:center; gap:10px; flex-wrap:wrap; }
+    .file-input input{ max-width: 260px; }
+    .pill{ border:1px solid rgba(34,49,73,.9); border-radius:999px; padding:6px 10px; color:var(--muted); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">My Blog</a>
+      <nav class="nav">
+        <a href="./index.html">View site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Admin</h1>
+      <p class="muted">Create/edit posts, then export a fresh <span class="mono">posts.json</span>.</p>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <button id="btnLoadFromServer" class="button secondary">Load posts.json</button>
+
+        <span class="file-input">
+          <span class="pill">Import file</span>
+          <input id="fileImport" type="file" accept=".json,application/json" />
+        </span>
+
+        <button id="btnNewPost" class="button">New post</button>
+        <button id="btnExport" class="button">Export posts.json</button>
+        <button id="btnSaveDraft" class="button secondary">Save draft (browser)</button>
+        <button id="btnLoadDraft" class="button secondary">Load draft</button>
+        <button id="btnClearDraft" class="button secondary danger">Clear draft</button>
+      </div>
+
+      <p class="help">
+        Tip: open this page via <span class="mono">http://localhost:8000/admin.html</span> or your live domain (not <span class="mono">file:///</span>).
+      </p>
+    </section>
+
+    <div class="admin-grid">
+      <aside class="card">
+        <h2>Posts</h2>
+        <div class="row">
+          <input id="filter" class="input" type="search" placeholder="Filter by title/slug/tag…" />
+        </div>
+        <div id="postList" class="admin-list" style="margin-top:12px;"></div>
+      </aside>
+
+      <section class="card">
+        <div id="editorEmpty" class="muted">Select a post to edit, or click “New post”.</div>
+
+        <div id="editor" style="display:none;">
+          <h2>Edit Post</h2>
+
+          <div class="row">
+            <input id="title" class="input" placeholder="Title" />
+            <input id="slug" class="input mono" placeholder="slug-like-this" />
+          </div>
+
+          <div class="row">
+            <input id="date" class="input mono" placeholder="YYYY-MM-DD" />
+            <input id="tags" class="input" placeholder="tags,comma,separated" />
+          </div>
+
+          <div class="row">
+            <input id="excerpt" class="input" placeholder="Excerpt (1–2 sentences)" />
+          </div>
+
+          <div class="toolbar" style="margin-top:12px;">
+            <button id="btnAddBlock" class="button secondary">Add block</button>
+            <select id="blockType" class="select" style="max-width: 260px;">
+              <option value="p">Paragraph</option>
+              <option value="h2">Heading</option>
+              <option value="list">List</option>
+              <option value="video">Video</option>
+              <option value="quote">Quote</option>
+              <option value="callout">Callout</option>
+              <option value="sources">Sources</option>
+              <option value="image">Image</option>
+            </select>
+
+            <button id="btnDeletePost" class="button secondary danger">Delete post</button>
+          </div>
+
+          <div class="split" style="margin-top:14px;">
+            <div>
+              <h3>Blocks</h3>
+              <div id="blocks"></div>
+            </div>
+            <div>
+              <h3>Preview</h3>
+              <div id="preview" class="preview"></div>
+            </div>
+          </div>
+
+          <div class="toolbar" style="margin-top:16px;">
+            <button id="btnApply" class="button">Apply changes</button>
+            <span class="muted" id="status"></span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="site-footer">
+      <p class="muted">© <span id="year"></span> My Blog</p>
+    </footer>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
