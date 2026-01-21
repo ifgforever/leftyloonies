@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Article</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Article" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">My Blog</a>
+      <nav class="nav">
+        <a href="./index.html">← Back</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article id="article" class="card article">
+      <div class="skeleton">Loading…</div>
+    </article>
+
+    <section class="card">
+      <h3>Share</h3>
+      <div class="share-row">
+        <button id="copyLink" class="button">Copy link</button>
+        <a id="tweetLink" class="button secondary" href="#" target="_blank" rel="noopener">Post to X</a>
+      </div>
+      <p class="muted small">Tip: keep titles factual; link sources; avoid personal attacks.</p>
+    </section>
+
+    <footer class="site-footer">
+      <p class="muted">© <span id="year"></span> My Blog</p>
+    </footer>
+  </main>
+
+  <script src="post.js"></script>
+</body>
+</html>
